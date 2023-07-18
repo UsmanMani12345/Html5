@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form</title>
+
+</head>
+<body>
+  <h2>Signup Form</h2>
+  <form name="signupForm" onsubmit="return validateForm()">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br><br>
+
+    <input type="submit" value="Sign up">
+  </form>
+
+
+  <script>
+    function validateForm() {
+      // Retrieve the values from the form
+      var name = document.forms["signupForm"]["name"].value;
+      var email = document.forms["signupForm"]["email"].value;
+      var password = document.forms["signupForm"]["password"].value;
+
+      // Perform basic validation
+      if (name === "" || email === "" || password === "") {
+        alert("Please fill in all fields");
+        return false;
+      }
+
+      // You can add additional validation checks here
+
+      // Submit the form if all validations pass
+      alert("Signup successful!");
+      return true;
+    }
+  </script>
+</body>
+</html>

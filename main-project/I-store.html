@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Product</title>
+<style>
+    body{
+        background: #aaa;
+    }
+    #searchInput{
+        width: 100vh;
+        height: 8vh;
+        list-style: none;
+        border: none;
+        margin-left: 50vh;
+        margin-top: 20vh;
+    }
+  #searchResults {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 50vh;
+  }
+  
+  #searchResults li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #searchResults li:hover {
+    background-color: #f1f1f1;
+  }
+  
+</style>
+</head>
+<body>
+ 
+  <input type="text" id="searchInput" placeholder="Search products">
+  <button id="searchButton">Search</button>
+  <ul id="searchResults"></ul>
+  
+
+<script>
+  const products = [
+  { name: "SmartWatch", id: 1, url: "http://127.0.0.1:5500/main-project/smartwatch.html" },
+  { name: "Shoes", id: 2, url: "http://127.0.0.1:5500/main-project/shoes.html" },
+  { name: "Phone", id: 3, url: "http://127.0.0.1:5500/main-project/mobile.html" },
+  { name: "micropone", id: 4, url: "http://127.0.0.1:5500/main-project/microphone.html" },
+  { name: "Laptop", id: 5, url: "http://127.0.0.1:5500/main-project/laptop.html" },
+  { name: "caps", id: 6, url: "https://example.com/product3" },
+  { name: "fan", id: 7, url: "https://example.com/product1" },
+  { name: "minispeakers", id: 8, url: "https://example.com/product2" },
+  { name: "ring", id: 9, url: "https://example.com/product3" },
+  { name: "Sport", id: 10, url: "https://example.com/product3" },
+  { name: "Giftbag", id: 11, url: "https://example.com/product1" },
+  { name:  "tshirt", id: 12, url: "https://example.com/product2" },
+  { name: "trouser", id: 13, url: "https://example.com/product3" },
+  // Add more products here
+];
+
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const searchResults = document.getElementById('searchResults');
+
+searchButton.addEventListener('click', handleSearch);
+
+function handleSearch() {
+  const searchText = searchInput.value.toLowerCase();
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchText)
+  );
+  displaySearchResults(filteredProducts);
+}
+
+function displaySearchResults(results) {
+  searchResults.innerHTML = '';
+  results.forEach(result => {
+    const li = document.createElement('li');
+    li.textContent = result.name;
+    li.addEventListener('click', () => {
+      // Open the product page when clicked
+      window.open(result.url, '_blank');
+    });
+    searchResults.appendChild(li);
+  });
+}
+
+</script>
+</body>
+</html>
